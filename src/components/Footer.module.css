@@ -1,0 +1,75 @@
+.footer {
+  background-color: #2e4a2c; /* Темно-зеленый цвет */
+  color: #ffffff;
+  padding: 40px 20px 20px; /* Увеличим отступы, чтобы было больше похоже на скрин */
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Выравниваем элементы по верхнему краю */
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 30px; /* Отступ перед копирайтом */
+}
+
+.leftColumn {
+  flex: 1;
+  max-width: 50%; /* Чтобы не занимал всю ширину */
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.rightColumn {
+  display: flex;
+  align-items: center; /* Выравниваем по центру вертикально */
+}
+
+.servicesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Чтобы элементы были в строку */
+  align-items: center; /* Выравниваем по центру вертикально */
+}
+
+.serviceItem {
+  margin-left: 30px; /* Отступ между "Services" и кнопкой */
+  font-size: 16px;
+}
+
+.bookAppointmentButton {
+  background-color: #5cb85c; /* Зеленая кнопка */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.bookAppointmentButton:hover {
+  background-color: #4cae4c;
+}
+
+.copyright {
+  text-align: right; /* Копирайт справа */
+  font-size: 12px;
+  opacity: 0.7;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Линия сверху */
+  padding-top: 15px; /* Отступ от линии */
+}

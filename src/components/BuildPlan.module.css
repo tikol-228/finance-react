@@ -1,0 +1,179 @@
+.buildPlan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 100px;
+  gap: 40px;
+  max-width: 1200px; /* Ограничиваем максимальную ширину для лучшей читаемости */
+  margin: 0 auto; /* Центрируем блок на странице */
+  box-sizing: border-box; /* Учитываем padding в общей ширине */
+}
+
+/* Левая часть */
+.textBlock {
+  flex: 1;
+  background-color: #4caf50; /* зелёный фон */
+  color: white;
+  min-height: 20rem; /* Изменено на min-height для адаптивности */
+  padding: 40px;
+  border-radius: 20px;
+  display: flex; /* Добавляем flexbox для управления контентом */
+  flex-direction: column;
+  justify-content: center; /* Центрируем контент по вертикали */
+}
+
+/* Заголовок и текст */
+.title {
+  font-size: 2.2rem; /* Немного увеличен для лучшего восприятия */
+  margin-bottom: 15px;
+  /* Оптимизация рендеринга текста */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.6; /* Немного увеличен line-height для лучшей читаемости */
+  margin-bottom: 25px; /* Увеличен отступ от кнопки */
+  /* Оптимизация рендеринга текста */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Правая часть с картинкой */
+.imageBlock {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Центрируем изображение по вертикали */
+}
+
+.image {
+  width: 100%;
+  max-width: 500px; /* Установил фиксированный max-width, можно настроить */
+  height: auto; /* Высота подстраивается автоматически */
+  border-radius: 25px; /* закруглённые углы */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  display: block; /* Удаляет лишний пробел под изображением */
+  object-fit: cover; /* Изображение будет покрывать область, может обрезаться */
+}
+
+.learnMoreBtn {
+  background-color: white;
+  color: #4caf50;
+  border: none;
+  padding: 12px 26px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  /* Улучшение доступности при фокусе */
+  outline: none; 
+}
+
+.learnMoreBtn:hover {
+  background-color: #43a047; /* чуть темнее зелёный */
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.learnMoreBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.learnMoreBtn:focus-visible { /* Для улучшения доступности по клавиатуре */
+  outline: 2px solid #4caf50;
+  outline-offset: 3px;
+}
+
+/* Медиа-запросы для адаптивности */
+
+@media (max-width: 992px) {
+  .buildPlan {
+    flex-direction: column; /* Изменяем на вертикальное расположение */
+    padding: 40px 60px;
+    gap: 30px;
+    text-align: center; /* Центрируем текст */
+  }
+
+  .textBlock {
+    min-height: auto; /* Позволяем высоте подстраиваться под контент */
+    padding: 30px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .imageBlock {
+    order: -1; /* Перемещаем изображение вверх на мобильных */
+    margin-bottom: 30px; /* Добавляем отступ после изображения */
+  }
+
+  .image {
+    max-width: 70%; /* Уменьшаем максимальную ширину изображения */
+  }
+
+  .learnMoreBtn {
+    margin: 0 auto; /* Центрируем кнопку */
+  }
+}
+
+@media (max-width: 768px) {
+  .buildPlan {
+    padding: 30px 30px;
+    gap: 25px;
+  }
+
+  .textBlock {
+    padding: 25px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .image {
+    max-width: 85%; /* Ещё немного увеличиваем изображение на планшетах */
+  }
+}
+
+@media (max-width: 576px) {
+  .buildPlan {
+    padding: 20px 20px;
+    gap: 20px;
+  }
+
+  .textBlock {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .image {
+    max-width: 90%; /* Позволяем изображению занимать больше места */
+  }
+
+  .learnMoreBtn {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+}

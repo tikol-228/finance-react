@@ -1,0 +1,109 @@
+/* Базовые стили для десктопов и больших экранов */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #f9faf8; /* мягкий фон, как на картинке */
+  padding: 80px 20px; /* Отступы по бокам для больших экранов */
+  min-height: 400px; /* Можно добавить минимальную высоту для секции */
+}
+
+.title {
+  font-size: 2.75rem; /* Немного увеличим для десктопа, чтобы соответствовало скриншоту */
+  line-height: 1.35; /* Улучшим межстрочный интервал */
+  color: #2f4a2f; /* тёмно-зелёный текст */
+  max-width: 800px;
+  margin-bottom: 40px;
+  font-weight: 500;
+  /* Уберем <br/> из TSX и будем полагаться на CSS для переноса строк */
+  white-space: pre-wrap; /* Позволяет тексту переноситься естественным образом */
+}
+
+.connectBtn {
+  background-color: #2f4a2f;
+  color: white;
+  border: none;
+  border-radius: 9999px; /* Полностью круглые края */
+  padding: 16px 40px; /* Увеличим отступы кнопки для лучшего вида */
+  font-size: 1.1rem; /* Увеличим размер шрифта кнопки */
+  font-weight: 500; /* Medium weight */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap; /* Чтобы текст кнопки не переносился */
+}
+
+.connectBtn:hover {
+  background-color: #385b38;
+}
+
+/* --- Медиа-запросы для адаптивности --- */
+
+/* Для планшетов и экранов среднего размера (например, до 992px) */
+@media (max-width: 992px) {
+  .container {
+    padding: 60px 20px; /* Уменьшим вертикальные отступы */
+  }
+
+  .title {
+    font-size: 2.25rem; /* Уменьшим размер заголовка */
+    line-height: 1.3;
+    max-width: 600px; /* Уменьшим максимальную ширину */
+    margin-bottom: 30px;
+  }
+
+  .connectBtn {
+    padding: 14px 36px;
+    font-size: 1rem;
+  }
+}
+
+/* Для небольших планшетов и больших мобильных телефонов (например, до 768px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 50px 15px; /* Еще уменьшим отступы */
+  }
+
+  .title {
+    font-size: 1.8rem; /* Еще уменьшим размер заголовка */
+    line-height: 1.25;
+    max-width: 500px;
+    margin-bottom: 25px;
+  }
+
+  .connectBtn {
+    padding: 12px 30px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Для мобильных телефонов (например, до 576px) */
+@media (max-width: 576px) {
+  .container {
+    padding: 40px 10px; /* Минимальные отступы */
+  }
+
+  .title {
+    font-size: 1.5rem; /* Заголовок для мобильных */
+    line-height: 1.2;
+    max-width: 90%; /* Относительная ширина для мобильных */
+    margin-bottom: 20px;
+  }
+
+  .connectBtn {
+    padding: 10px 24px; /* Меньшая кнопка */
+    font-size: 0.9rem;
+  }
+}
+
+/* Если нужно совсем маленькие экраны */
+@media (max-width: 400px) {
+  .title {
+    font-size: 1.3rem;
+  }
+  .connectBtn {
+    padding: 8px 20px;
+    font-size: 0.85rem;
+  }
+}

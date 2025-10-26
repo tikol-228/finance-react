@@ -1,0 +1,166 @@
+/* Добавим глобальный сброс или переменную для шрифта, если это возможно */
+/* В реальном проекте это лучше вынести в общий styles/globals.css */
+body {
+  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Попытка имитировать шрифт Figma */
+  color: #333; /* Общий цвет текста */
+}
+
+.smartFinanceSection {
+  max-width: 1200px; /* Ширина контента на макете */
+  margin: 100px auto; /* Увеличиваем отступы сверху/снизу для большего соответствия */
+  padding: 0 32px; /* Увеличиваем внутренние отступы по бокам, как на Figma */
+  box-sizing: border-box; /* Важно для корректной работы padding с max-width */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 70px; /* Увеличиваем отступ между заголовком и карточками */
+  gap: 40px; /* Расстояние между заголовком и текстом */
+}
+
+.mainTitle {
+  font-size: 56px; /* Чуть крупнее, чтобы соответствовать макету */
+  font-weight: 700; /* Более жирный шрифт */
+  color: #1a1a1a; /* Более темный цвет текста */
+  line-height: 1.1;
+  letter-spacing: -0.02em; /* Небольшой отрицательный spacing для современного вида */
+  width: 45%; /* Уточняем ширину для соответствия макету */
+  margin: 0;
+}
+
+.introText {
+  font-size: 17px; /* Чуть крупнее */
+  line-height: 1.6;
+  color: #5b5b5b; /* Более мягкий цвет текста */
+  width: 55%; /* Уточняем ширину */
+  margin: 0;
+  padding-top: 10px; /* Небольшой отступ сверху для визуального выравнивания с заголовком */
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; /* Уточняем расстояние между карточками */
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px; /* Более выраженные закругления */
+  padding: 32px; /* Увеличиваем внутренние отступы */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* Чуть более выраженная тень */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Анимация при наведении */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Небольшой подъем при наведении */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); /* Усиленная тень при наведении */
+}
+
+.iconWrapper {
+  width: 50px; /* Увеличиваем размер обертки иконки */
+  height: 50px;
+  background-color: #e6f6f5; /* Более светлый, бирюзовый оттенок фона */
+  border-radius: 12px; /* Закругленные углы, как на макете */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px; /* Отступ под иконкой */
+}
+
+.icon {
+  font-size: 28px; /* Увеличиваем размер иконки */
+  color: #2196f3; /* Более яркий синий цвет иконки (можно настроить под бренд) */
+  line-height: 1; /* Чтобы иконка точно центрировалась */
+}
+
+.cardTitle {
+  font-size: 24px; /* Более крупный заголовок карточки */
+  font-weight: 600; /* Полужирный */
+  color: #1a1a1a;
+  margin-top: 0;
+  margin-bottom: 8px; /* Меньший отступ */
+  letter-spacing: -0.01em;
+}
+
+.cardSubtitle {
+  font-size: 15px; /* Чуть крупнее */
+  color: #757575; /* Более темный серый */
+  margin-bottom: 24px; /* Увеличиваем отступ */
+  font-weight: 500;
+}
+
+.cardDescription {
+  font-size: 15px; /* Соответствует подзаголовку по размеру */
+  line-height: 1.7; /* Увеличиваем межстрочный интервал */
+  color: #5b5b5b; /* Цвет текста описания */
+}
+
+/* Адаптивность для меньших экранов */
+@media (max-width: 1024px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .mainTitle,
+  .introText {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .mainTitle {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .smartFinanceSection {
+    margin: 60px auto;
+    padding: 0 20px;
+  }
+
+  .cardsContainer {
+    grid-template-columns: 1fr; /* Одна колонка на планшетах */
+  }
+
+  .mainTitle {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainTitle {
+    font-size: 32px;
+  }
+  .header {
+    margin-bottom: 40px;
+  }
+  .card {
+    padding: 24px;
+  }
+  .iconWrapper {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 20px;
+  }
+  .icon {
+    font-size: 24px;
+  }
+  .cardTitle {
+    font-size: 20px;
+  }
+  .cardSubtitle {
+    font-size: 14px;
+  }
+  .cardDescription {
+    font-size: 14px;
+  }
+}

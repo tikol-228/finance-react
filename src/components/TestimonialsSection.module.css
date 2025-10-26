@@ -1,0 +1,242 @@
+/* --- CSS Переменные (можно вынести в :root или глобальные стили) --- */
+:root {
+  --color-primary-text: #1A1A1A;
+  --color-secondary-text: #757575;
+  --color-light-grey-border: #E0E0E0;
+  --color-bg-active-client: #EDF7F6; /* Светло-бирюзовый */
+  --color-accent-blue: #3B82F6; /* Синий акцент с макета */
+  --color-bg-hover: #F8F8F8; /* Очень светлый серый для ховера */
+  --font-family-base: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  font-family: var(--font-family-base);
+  color: var(--color-primary-text);
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased; /* Для лучшего рендеринга шрифтов */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Общий контейнер секции */
+.testimonialsSection {
+  max-width: 1080px; /* Ширина из макета Figma */
+  margin: 120px auto; /* Отступы сверху/снизу */
+  padding: 0 0px; /* Здесь 0, так как сам container_with_shadow имеет паддинг */
+  box-sizing: border-box;
+}
+
+/* Заголовок секции */
+.header {
+  text-align: center;
+  margin-bottom: 64px; /* Отступ между заголовком и основным контентом */
+}
+
+.mainTitle {
+  font-size: 48px; /* Размер шрифта из макета */
+  font-weight: 700; /* Bold */
+  color: var(--color-primary-text);
+  line-height: 1.25; /* 60px / 48px = 1.25, если на макете 60px line-height */
+  letter-spacing: -0.02em; /* Отрицательный кернинг */
+  margin: 0;
+  padding: 0;
+}
+
+/* Контейнер для списка клиентов и карточки отзыва */
+.contentContainer {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 12px; /* Закругления, как на макете */
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.08); /* Точные параметры тени */
+  overflow: hidden; /* Важно для border-radius и тени */
+  min-height: 100px; /* Высота из макета */
+}
+
+/* Список клиентов слева */
+.clientsList {
+  flex: 0 0 350px; /* Фиксированная ширина левой колонки */
+  border-right: 1px solid var(--color-light-grey-border); /* Тонкая серая линия-разделитель */
+  padding: 32px 0; /* Отступы сверху/снизу внутри списка */
+  /* Если список может быть очень длинным, добавить: overflow-y: auto; max-height: 500px; */
+}
+
+/* Отдельный элемент клиента в списке */
+.clientItem {
+  padding: 16px 32px; /* Внутренние отступы, как на макете */
+  cursor: pointer;
+  border-left: 4px solid transparent; /* Для индикатора активного элемента */
+  transition: background-color 0.2s ease, border-left-color 0.2s ease; /* Плавный переход */
+  outline: none; /* Убираем стандартный аутлайн при фокусе, если хотим кастомный */
+}
+
+.clientItem:hover {
+  background-color: var(--color-bg-hover); /* Легкий фон при наведении */
+}
+
+.clientItem:focus-visible { /* Для доступности, фокус при навигации клавиатурой */
+  outline: 2px solid var(--color-accent-blue);
+  outline-offset: -2px;
+}
+
+.clientItem.active {
+  background-color: var(--color-bg-active-client); /* Светло-бирюзовый фон для активного */
+  border-left-color: var(--color-accent-blue); /* Синяя полоса слева */
+}
+
+.clientRole {
+  font-size: 16px; /* Размер шрифта */
+  font-weight: 600; /* SemiBold */
+  color: var(--color-primary-text);
+  line-height: 1.5; /* 24px / 16px = 1.5 */
+  margin: 0 0 4px; /* Отступ снизу */
+}
+
+.clientLocation {
+  font-size: 14px; /* Размер шрифта */
+  font-weight: 400; /* Regular */
+  color: var(--color-secondary-text);
+  line-height: 1.5; /* 21px / 14px = 1.5 */
+  margin: 0;
+}
+
+/* Карточка отзыва справа */
+.testimonialCard {
+  flex: 1; /* Занимает оставшееся пространство */
+  padding: 40px; /* Внутренние отступы, как на макете */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Распределяет содержимое (цитата, клиент) */
+  animation: fadeIn 0.4s ease-out forwards; /* Плавное появление отзыва, forwards чтобы оставалось в конечном состоянии */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.quote {
+  font-size: 24px; /* Размер шрифта */
+  font-weight: 500; /* Medium */
+  color: var(--color-primary-text);
+  line-height: 1.5; /* 36px / 24px = 1.5 */
+  margin: 0 0 32px; /* Отступ от цитаты до блока с клиентом */
+  padding: 0;
+}
+
+/* Информация о клиенте в отзыве (аватар + имя/возраст) */
+.clientInfo {
+  display: flex;
+  align-items: center; /* Выравнивание по центру вертикально */
+  gap: 12px; /* Расстояние между аватаром и текстом */
+}
+
+.clientAvatar {
+  width: 48px; /* Точный размер аватара */
+  height: 48px;
+  border-radius: 50%; /* Круглый аватар */
+  object-fit: cover; /* Чтобы изображение не деформировалось */
+  border: 1px solid var(--color-light-grey-border); /* Тонкая серая обводка */
+  flex-shrink: 0; /* Чтобы аватар не сжимался на мобильных */
+}
+
+.testimonialClientName {
+  font-size: 16px; /* Размер шрифта */
+  font-weight: 600; /* SemiBold */
+  color: var(--color-primary-text);
+  line-height: 1.5; /* 24px / 16px = 1.5 */
+  margin: 0 0 2px; /* Отступ от имени до возраста */
+}
+
+.testimonialClientAge {
+  font-size: 14px; /* Размер шрифта */
+  font-weight: 400; /* Regular */
+  color: var(--color-secondary-text);
+  line-height: 1.5; /* 21px / 14px = 1.5 */
+  margin: 0;
+}
+
+/* ========================================================= */
+/* Адаптивность для разных экранов */
+/* ========================================================= */
+
+/* Для больших планшетов и экранов с меньшей шириной, чем 1080px */
+@media (max-width: 1100px) {
+  .testimonialsSection {
+    padding: 0 24px; /* Добавляем внутренние отступы, чтобы контент не прилипал к краям */
+  }
+}
+
+/* Точка перехода: когда левая колонка начинает занимать слишком много */
+@media (max-width: 900px) {
+  .mainTitle {
+    font-size: 40px;
+    line-height: 1.3;
+  }
+  .contentContainer {
+    flex-direction: column; /* Перестраиваем в колонку */
+    min-height: auto; /* Убираем фиксированную высоту */
+  }
+  .clientsList {
+    flex: none; /* Убираем фиксированную ширину */
+    width: 100%; /* Занимает всю ширину */
+    border-right: none;
+    border-bottom: 1px solid var(--color-light-grey-border); /* Добавляем нижнюю границу */
+    padding: 24px 0; /* Отступы */
+  }
+  .clientItem {
+    padding: 12px 24px; /* Меньшие отступы */
+  }
+  .testimonialCard {
+    padding: 32px 24px; /* Меньшие отступы */
+  }
+  .quote {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .clientAvatar {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Для мобильных устройств */
+@media (max-width: 600px) {
+  .testimonialsSection {
+    margin: 60px auto;
+    padding: 0 16px;
+  }
+  .mainTitle {
+    font-size: 32px;
+    line-height: 1.4;
+    margin-bottom: 40px;
+  }
+  .clientItem {
+    padding: 10px 16px;
+  }
+  .clientRole {
+    font-size: 15px;
+  }
+  .clientLocation {
+    font-size: 13px;
+  }
+  .testimonialCard {
+    padding: 24px 16px;
+  }
+  .quote {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .clientAvatar {
+    width: 38px;
+    height: 38px;
+  }
+  .testimonialClientName {
+    font-size: 14px;
+  }
+  .testimonialClientAge {
+    font-size: 12px;
+  }
+}

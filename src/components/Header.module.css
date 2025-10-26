@@ -1,0 +1,54 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #A0F1BD; /* цвет фона как на макете */
+  width: 100%;
+  height: 101px;
+  padding: 0 40px; /* внутренние отступы как в Figma */
+  box-sizing: border-box;
+}
+
+/* Логотип слева */
+.logo {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1C1C1C;
+  margin: 0;
+}
+
+/* Контейнер для кнопок */
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* расстояние между кнопками */
+}
+
+/* Общие стили кнопок */
+.servicesBtn,
+.regBtn {
+  border: none;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 22px;
+  border-radius: 999px; /* овальная форма */
+  transition: background-color 0.2s ease;
+}
+
+.servicesBtn {
+  color: #2E4F21;
+  background: none;
+}
+
+/* Book an appointment — тёмно-зелёная */
+.regBtn {
+  background-color: #2E4F21;
+  color: #ffffff;
+}
+
+.regBtn:hover {
+  background-color: #333333;
+}

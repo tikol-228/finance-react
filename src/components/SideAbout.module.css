@@ -1,0 +1,204 @@
+/* Базовые стили для секции */
+.section {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto; /* Центрируем секцию */
+  gap: 3rem;
+  padding: 4rem 1rem; /* Добавляем горизонтальный padding */
+  max-width: 1200px; /* Ограничиваем максимальную ширину для лучшей читаемости */
+}
+
+/* Контейнер для выравнивания карточек */
+.rowWrapper {
+  display: flex;
+  /* justify-content: flex-end; /* Убираем по умолчанию, так как управляется alignLeft/Right */
+  width: 100%; /* Занимаем всю доступную ширину */
+}
+
+/* Чередование */
+.alignLeft {
+  justify-content: flex-start;
+}
+
+.alignRight {
+  justify-content: flex-end;
+}
+
+/* Карточка */
+.card {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; /* Может привести к нежелательным пробелам, если flex-grow у элементов */
+  background-color: #d9f7d9;
+  border-radius: 20px;
+  padding: 2rem;
+  /* height: auto; /* Изменено на auto для адаптивности контента */
+  gap: 2rem;
+  max-width: 60%; /* Используем max-width, чтобы карточка могла сжиматься */
+  min-height: 30rem; /* Сохраняем минимальную высоту, но позволяем расширяться */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Добавляем box-shadow для hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень по умолчанию */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Усиленная тень при hover */
+}
+
+.reversed {
+  flex-direction: row-reverse;
+}
+
+.image {
+  width: 250px;
+  height: auto;
+  flex-shrink: 0;
+  object-fit: contain; /* Убедимся, что изображение вписывается без обрезки */
+  display: block; /* Убираем лишний отступ */
+}
+
+.content {
+  flex-grow: 1; /* Позволяем контенту занимать доступное пространство */
+  max-width: 500px; /* Сохраняем максимальную ширину для читаемости */
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #2E4F21;
+  margin-bottom: 1rem;
+  /* Оптимизация рендеринга текста */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.description {
+  font-size: 1.5rem;
+  color: #4d5b4d;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  /* Оптимизация рендеринга текста */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem; /* Отступ от описания */
+}
+
+.tag {
+  background-color: white;
+  border: 1px solid #b6c5b6;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: #2f3e2f;
+  white-space: nowrap; /* Предотвращает разрыв тегов на несколько строк */
+}
+
+/* Визуально скрытый, но доступный для скрин-ридеров заголовок */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Медиа-запросы для адаптивности */
+
+/* Для планшетов и больших мобильных устройств */
+@media (max-width: 992px) {
+  .section {
+    gap: 2rem;
+    padding: 3rem 1rem;
+  }
+
+  .rowWrapper {
+    justify-content: center !important; /* Центрируем все карточки на средних экранах */
+  }
+
+  .card {
+    flex-direction: column !important; /* Всегда колонка на мобильных */
+    max-width: 80%; /* Увеличиваем ширину карточки */
+    min-height: auto; /* Позволяем высоте подстраиваться под контент */
+    padding: 1.5rem;
+    text-align: center; /* Центрируем текст внутри карточки */
+  }
+
+  .reversed {
+    flex-direction: column !important; /* Убираем обратный порядок для мобильных */
+  }
+
+  .image {
+    width: 200px; /* Уменьшаем размер изображения */
+    margin-bottom: 1rem; /* Отступ между изображением и текстом */
+  }
+
+  .content {
+    max-width: 100%; /* Контент занимает всю ширину */
+  }
+
+  .title {
+    font-size: 2.5rem;
+    margin-top: 1rem; /* Отступ сверху для заголовка после изображения */
+  }
+
+  .description {
+    font-size: 1.25rem;
+  }
+
+  .tags {
+    justify-content: center; /* Центрируем теги */
+  }
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+  .section {
+    padding: 2rem 0.5rem;
+    gap: 1.5rem;
+  }
+
+  .card {
+    max-width: 95%; /* Ещё больше ширина на очень маленьких экранах */
+    padding: 1rem;
+  }
+
+  .image {
+    width: 150px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .tag {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  .description {
+    font-size: 0.9rem;
+  }
+  .image {
+    width: 120px;
+  }
+}
